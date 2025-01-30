@@ -53,6 +53,7 @@ done
 
 for arch in "${archs[@]}"; do
     git checkout ae-$arch
+    git pull
 
     # re-compile libvortexrt.a
     # FIXME after restructure
