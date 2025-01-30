@@ -19,7 +19,7 @@ using float_type = float16_t;
 
 // Generate kernel for the Hopper-style SMEM-decoupled tensor core.  This uses
 // asynchronous HGMMA and HGMMA_WAIT instructions.
-#define TENSOR_HOPPER 0
+#define TENSOR_HOPPER 1
 
 // Constraints on parameters:
 // * Memory:

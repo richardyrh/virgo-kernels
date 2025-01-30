@@ -95,6 +95,8 @@ void kernel_body(int task_id, kernel_arg_t *__UNIFORM__ arg) {
   constexpr uint32_t quartile = (128 << 10) >> 2; // 128KB / 4
   static_assert((quartile * 4) == SMEM_SIZE, "wrong quartile constant");
 
+  MARK_BEG();
+
   constexpr uint32_t smem_a_offset = 0;
   constexpr uint32_t smem_a_dbuf_offset = 1 * quartile;
   constexpr uint32_t smem_b_offset =
@@ -118,6 +120,8 @@ void kernel_body(int task_id, kernel_arg_t *__UNIFORM__ arg) {
                       arg->dim_m, arg->dim_n, arg->dim_k, tid_in_threadblock,
                       threadblocks_per_cluster, threadblock_id_in_cluster,
                       sharedmem_per_threadblock);
+
+  MARK_END();
 
   float *gmem_tmp_d0 = reinterpret_cast<float *>(0xd0000000UL);
   float *gmem_tmp_d1 = reinterpret_cast<float *>(0xd1000000UL);
