@@ -1,1 +1,1 @@
-gemmini_params.dim16fp16.h
+gemmini_params.dim8fp32.h
