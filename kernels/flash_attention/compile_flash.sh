@@ -30,7 +30,6 @@ for arch in "${archs[@]}"; do
     git pull
 
     # re-compile libvortexrt.a
-    # FIXME after restructure
     pushd ../../lib
     make
     popd
@@ -40,6 +39,7 @@ for arch in "${archs[@]}"; do
     # touch source file to force re-building, as the Makefile does not track
     # binary changes
     touch kernel.cpp
+    touch kernel.gemmini.cpp
 
     make CONFIG=flash.$arch.seqlen1024.headdim64
 done
