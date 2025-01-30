@@ -110,7 +110,7 @@ static_assert(WMITER * WNITER * TCM * TCN * NUM_WARPS * CORES_PER_CLUSTER ==
 // result matrix will be stored in a swizzled form in the global memory.
 #define WMMA_STORE_FAST 0
 
-#define GEMMINI_DMA 1
+#define GEMMINI_DMA 0
 #define GEMMINI_DMA_FAST 1
 #if SMEM_SIZE == 0x4000
 #define SMEM_ADDR_Q0 ((float * const) 0xff000000)
