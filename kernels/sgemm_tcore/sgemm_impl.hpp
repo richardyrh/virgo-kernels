@@ -6,7 +6,7 @@
 #include "include/gemmini.h"
 #include "gemmini_mmio.h"
 
-#define FP_SIZE 16
+#define FP_SIZE 32
 
 // "fake" fp16 type that only has the correct data width.
 using float16_t = uint16_t;
