@@ -42,11 +42,11 @@ check_exists() {
 }
 
 for arch in "${archs[@]}"; do
-    git checkout kernels-asplos-ae-$arch
+    git checkout ae-$arch
 
     # re-compile libvortexrt.a
     # FIXME after restructure
-    pushd ../../../kernel
+    pushd ../../libs
     make
     popd
 
