@@ -18,7 +18,7 @@
 #include <stdio.h>
 
 #ifndef CORES_PER_CLUSTER
-#define CORES_PER_CLUSTER 8
+#define CORES_PER_CLUSTER 4
 #endif
 
 #ifdef __cplusplus
