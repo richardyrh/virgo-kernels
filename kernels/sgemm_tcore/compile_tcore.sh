@@ -56,7 +56,7 @@ for arch in "${archs[@]}"; do
 
     # re-compile libvortexrt.a
     # FIXME after restructure
-    pushd ../../libs
+    pushd ../../lib
     make
     popd
 
