@@ -26,7 +26,8 @@ ln -sf input.b.rand.fp32.seqlen1024headdim64.row.bin input.b.bin
 ln -sf input.c.rand.fp32.seqlen1024headdim64.row.bin input.c.bin
 
 for arch in "${archs[@]}"; do
-    git checkout ae-$arch
+    git checkout ae-flash-$arch
+    git pull
 
     # re-compile libvortexrt.a
     # FIXME after restructure
@@ -34,13 +35,11 @@ for arch in "${archs[@]}"; do
     make
     popd
 
-    for dim in "${dims[@]}"; do
-        echo "compiling flash_attn kernel for $arch with seqlen 1024, headdim 64"
+    echo "compiling flash_attn kernel for $arch with seqlen 1024, headdim 64"
 
-        # touch source file to force re-building, as the Makefile does not track
-        # binary changes
-        touch kernel.cpp
+    # touch source file to force re-building, as the Makefile does not track
+    # binary changes
+    touch kernel.cpp
 
-        make CONFIG=flash.$arch.seqlen1024.headdim64
-    done
+    make CONFIG=flash.$arch.seqlen1024.headdim64
 done
