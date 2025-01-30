@@ -27,6 +27,7 @@ ln -sf input.c.rand.fp32.seqlen1024headdim64.row.bin input.c.bin
 
 for arch in "${archs[@]}"; do
     git checkout ae-flash-$arch
+    git pull
 
     # re-compile libvortexrt.a
     # FIXME after restructure

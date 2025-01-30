@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# hopper and virgo has the same SIMT configurations
+git checkout ae-hopper
+git pull
+
 if [ ! -f input.a.rand01.fp16.m256n256k256.row.bin ]; then
     echo "input binaries not found, generating operands"
     python3 generate_operands.py

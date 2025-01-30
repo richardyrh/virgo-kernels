@@ -53,7 +53,7 @@
 #define PRINTF(...) sprintf(PRINT_BUF, __VA_ARGS__)
 // #define PRINTF(...) vx_printf(__VA_ARGS__)
 #define SWISH(beta, x) ((x) / (1 + exp(-(beta) * (x))))
-// #define POWER
+#define POWER
 
 typedef uint16_t smem_elem_t;
 // typedef float smem_elem_t;
