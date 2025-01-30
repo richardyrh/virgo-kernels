@@ -17,9 +17,9 @@ constexpr uint32_t ROWMAX_SETS = 3;
 // constexpr bool WARP_SPECIALIZED = true;
 // constexpr bool GEMMINI_WARP_SPECIALIZED = false;
 // constexpr bool TENSOR_CORE = true;
-constexpr bool WARP_SPECIALIZED = false;
+constexpr bool WARP_SPECIALIZED = true;
 constexpr bool GEMMINI_WARP_SPECIALIZED = false;
-constexpr bool TENSOR_CORE = false;
+constexpr bool TENSOR_CORE = true;
 
 // temporary safety stop for wrong configs
 static_assert(NUM_CORES == 4);
