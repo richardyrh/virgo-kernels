@@ -41,12 +41,22 @@ check_exists() {
     fi
 }
 
+# generate operands
+for dim in "${dims[@]}"; do
+    echo "generating operands for dim $dim"
+    python3 generate_operands.py $dim $dim $dim
+    mv -v input.a.col.bin input.a.rand01.fp16.m${dim}n${dim}k${dim}.col.swizzle_fp16.bin
+    mv -v input.a.row.bin input.a.rand01.fp16.m${dim}n${dim}k${dim}.row.swizzle_fp16.bin
+    mv -v input.b.row.bin input.b.rand01.fp16.m${dim}n${dim}k${dim}.row.bin
+    mv -v input.b.row.swizzled.bin input.b.rand01.fp16.m${dim}n${dim}k${dim}.row.swizzle_fp16.bin
+done
+
 for arch in "${archs[@]}"; do
     git checkout ae-$arch
 
     # re-compile libvortexrt.a
     # FIXME after restructure
-    pushd ../../libs
+    pushd ../../lib
     make
     popd
 
