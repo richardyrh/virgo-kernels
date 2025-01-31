@@ -1257,7 +1257,7 @@ inline void thread_block_gemm(const T *A, const T *B, float *C,
               k_LOOP_WS_CONFIG_ADDRS_AB)
           // GEMMINI_CISC(8) does k_LOOP_WS_CONFIG_STRIDES_AB
           GEMMINI_CISC_CMD_R((dim_n << 20) | (dim_k << 8) | 8);
-          gemmini_fence();
+          // gemmini_fence();
 
           // block_k is even: opcode 11 (write to local_a_buf)
           // block_k is odd:  opcode 10 (write to local_a)
@@ -1266,8 +1266,8 @@ inline void thread_block_gemm(const T *A, const T *B, float *C,
           // the last iteration of the k-loop is prefetching for the first
           // iteration of the n-loop.  The ping-poing indexing has to match for
           // the two loop end to connect.
-          const uint32_t a_hexadecile = (block_k & 1) * 4;
-          const uint32_t b_hexadecile = (block_k & 1) * 4 + 11;
+          const uint32_t a_hexadecile = 4 - ((block_k & 1) * 4);
+          const uint32_t b_hexadecile = a_hexadecile + 11;
           GEMMINI_CISC_CMD_R((b_hexadecile << 16) | (a_hexadecile << 8) | GEMMINI_CISC_LOAD_TO_HEXADECILES);
           // // TODO: branch is probably slow
           // if (block_k & 1) {
